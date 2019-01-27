@@ -7,7 +7,7 @@ falcon-sorting-hook
     :target: https://travis-ci.org/Darkheir/falcon-sorting-hook
 .. image:: https://codecov.io/gh/Darkheir/falcon-sorting-hook/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/Darkheir/falcon-sorting-hook
-.. image:: https://api.codacy.com/project/badge/Grade/151e8f92301d431eb6144cf7915ef897
+.. image:: https://api.codacy.com/project/badge/Grade/a8a34e89d34b4a928e988fe1624e2eae
     :target: https://www.codacy.com/app/Darkheir/falcon-sorting-hook?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Darkheir/falcon-sorting-hook&amp;utm_campaign=Badge_Grade
 .. image:: https://pyup.io/repos/github/Darkheir/falcon-sorting-hook/shield.svg
     :target: https://pyup.io/repos/github/Darkheir/falcon-sorting-hook/
