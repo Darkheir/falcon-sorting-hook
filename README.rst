@@ -30,7 +30,7 @@ The easiest way to use this hook is the following:
 The Hook will look in the query parameters for parameters looking like :code:`sort=value`.
 
 The default sorting order is ascending.
-In order to sort in a descending order a minus (:code:`-`) sign need to be specified before the value.
+In order to sort in a descending order a minus (:code:`-`) sign needs to be specified before the value.
 i.e. :code:`sort=-value`
 
 It is possible to specify multiple ordering values by separating them with a comma.
@@ -40,7 +40,7 @@ It will create a list in the request context accessible at :code:`req.context['o
 This list consists of tuples where the first element is the name of the field to sort on
 and the second the order to follow (either :code:`ASC` or :code:`DESC`)
 
-i.e. :code:`[('foo', 'ASC'), ('desc', 'DESC')]`.
+i.e. :code:`[('foo', 'ASC'), ('bar', 'DESC')]`.
 
 Configuration options
 ---------------------
