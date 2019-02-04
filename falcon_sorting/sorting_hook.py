@@ -52,7 +52,8 @@ class SortingHook(object):
         request.context["sort"] = sort_list
         self._logger.debug("Sorting set in request.context['sort']")
 
-    def _remove_invalid_fields(self, sort_params, allowed_fields):
+    @staticmethod
+    def _remove_invalid_fields(sort_params, allowed_fields):
         return [f for f in sort_params if f.lstrip("-") in allowed_fields]
 
     @staticmethod
