@@ -15,7 +15,7 @@ setup(
     author="Raphael Cohen",
     author_email="raphael.cohen.utt@gmail.com",
     url="https://github.com/darkheir/falcon-sorting-hook",
-    version="0.1.0",
+    version="0.2.0",
     classifiers=classifiers,
     description="Falcon sorting helper",
     long_description=open("README.rst").read(),

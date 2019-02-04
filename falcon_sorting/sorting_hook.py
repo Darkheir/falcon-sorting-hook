@@ -34,6 +34,10 @@ class SortingHook(object):
         :param resource: Reference to the resource class instance associated with the request
         :param params: dict of URI Template field names
         """
+        if not hasattr(resource, "sorting_fields") or not resource.sorting_fields:
+            self._logger.debug("sorting_fields is not defined in resource, skipping")
+            request.context["sort"] = []
+            return
         if self._sort_query_key not in request.params.keys():
             self._logger.debug("Sorting key is not in query, skipping")
             request.context["sort"] = []
@@ -42,10 +46,14 @@ class SortingHook(object):
         sort_params = request.params[self._sort_query_key]
         if not isinstance(sort_params, list):
             sort_params = [sort_params]
+        sort_params = self._remove_invalid_fields(sort_params, resource.sorting_fields)
 
         sort_list = [self._get_sql_sort(sort) for sort in sort_params]
         request.context["sort"] = sort_list
         self._logger.debug("Sorting set in request.context['sort']")
+
+    def _remove_invalid_fields(self, sort_params, allowed_fields):
+        return [f for f in sort_params if f.lstrip("-") in allowed_fields]
 
     @staticmethod
     def _get_sql_sort(sort):
