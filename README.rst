@@ -22,6 +22,7 @@ Usage
 The easiest way to use this hook is the following:
 
 .. code:: python
+
     class Resource:
         sorting_fields = ("foo", "bar")  # List of fields allowed for sorting
 
