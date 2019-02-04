@@ -13,3 +13,11 @@ def request_obj(mocker):
         stream = mocker.Mock()
 
     return Request()
+
+
+@pytest.fixture()
+def resource():
+    class Resource:
+        sorting_fields = ["foo", "bar"]
+
+    return Resource()

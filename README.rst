@@ -22,10 +22,12 @@ Usage
 The easiest way to use this hook is the following:
 
 .. code:: python
+    class Resource:
+        sorting_fields = ("foo", "bar")  # List of fields allowed for sorting
 
-    @falcon.before(SortingHook())
-    def on_get(self, req, resp, user):
-        # Here req['context']['sort'] is set
+        @falcon.before(SortingHook())
+        def on_get(self, req, resp, user):
+            # Here req['context']['sort'] is set
 
 The Hook will look in the query parameters for parameters looking like :code:`sort=value`.
 
@@ -42,8 +44,20 @@ and the second the order to follow (either :code:`ASC` or :code:`DESC`)
 
 i.e. :code:`[('foo', 'ASC'), ('bar', 'DESC')]`.
 
+
 Configuration options
 ---------------------
+
+Allowing fields for sorting
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For security reasons, the fields allowed for sorting must be specified in
+the :code:`sorting_fields` attribute of the resource.
+
+All the fields not defined in it will be discarded by the hook.
+
+Hook configuration
+~~~~~~~~~~~~~~~~~~
 
 One parameter can be passed to the hook:
 
