@@ -5,7 +5,7 @@ def test_empty_request(request_obj, mocker):
     hook = SortingHook()
     hook(request_obj, mocker.Mock(), mocker.Mock(), dict())
 
-    assert isinstance(request_obj.context.get("order"), list)
+    assert isinstance(request_obj.context.get("sort"), list)
 
 
 def test_request_with_sort_default(request_obj, mocker):
@@ -13,7 +13,7 @@ def test_request_with_sort_default(request_obj, mocker):
     hook = SortingHook()
     hook(request_obj, mocker.Mock(), mocker.Mock(), dict())
 
-    assert request_obj.context["order"] == [('foo', 'ASC')]
+    assert request_obj.context["sort"] == [('foo', 'ASC')]
 
 
 def test_request_with_sort_desc(request_obj, mocker):
@@ -21,7 +21,7 @@ def test_request_with_sort_desc(request_obj, mocker):
     hook = SortingHook()
     hook(request_obj, mocker.Mock(), mocker.Mock(), dict())
 
-    assert request_obj.context["order"] == [('foo', 'DESC')]
+    assert request_obj.context["sort"] == [('foo', 'DESC')]
 
 
 def test_request_with_multiple_sorts(request_obj, mocker):
@@ -29,4 +29,4 @@ def test_request_with_multiple_sorts(request_obj, mocker):
     hook = SortingHook()
     hook(request_obj, mocker.Mock(), mocker.Mock(), dict())
 
-    assert request_obj.context["order"] == [('foo', 'ASC'), ('bar', 'DESC')]
+    assert request_obj.context["sort"] == [('foo', 'ASC'), ('bar', 'DESC')]

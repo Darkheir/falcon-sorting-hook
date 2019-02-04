@@ -36,19 +36,19 @@ class SortingHook(object):
         """
         if self._sort_query_key not in request.params.keys():
             self._logger.debug("Sorting key is not in query, skipping")
-            request.context["order"] = []
+            request.context["sort"] = []
             return
 
         sort_params = request.params[self._sort_query_key]
         if not isinstance(sort_params, list):
             sort_params = [sort_params]
 
-        order_list = [self._get_sql_order(sort) for sort in sort_params]
-        request.context["order"] = order_list
-        self._logger.debug("Sorting set in request.context['order']")
+        sort_list = [self._get_sql_sort(sort) for sort in sort_params]
+        request.context["sort"] = sort_list
+        self._logger.debug("Sorting set in request.context['sort']")
 
     @staticmethod
-    def _get_sql_order(sort):
+    def _get_sql_sort(sort):
         if sort[0:1] == "-":
             return sort[1:], "DESC"
         return sort, "ASC"
