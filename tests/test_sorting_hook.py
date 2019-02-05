@@ -6,6 +6,7 @@ def test_empty_request_empty_resource(request_obj, mocker):
 
     class EmptyResource(object):
         sorting_fields = []
+
     hook(request_obj, mocker.Mock(), EmptyResource(), dict())
 
     assert isinstance(request_obj.context.get("sort"), list)
@@ -59,8 +60,9 @@ def test_request_with_sort_default_empty_request(request_obj, mocker):
     hook = SortingHook()
 
     class Resource(object):
-        sorting_fields = ['foo']
-        default_sorting = '-foo'
+        sorting_fields = ["foo"]
+        default_sorting = "-foo"
+
     hook(request_obj, mocker.Mock(), Resource(), dict())
 
     assert request_obj.context["sort"] == [("foo", "DESC")]
@@ -71,8 +73,9 @@ def test_request_with_sort_default_and_param(request_obj, mocker):
     hook = SortingHook()
 
     class Resource(object):
-        sorting_fields = ['foo', 'bar']
-        default_sorting = '-foo'
+        sorting_fields = ["foo", "bar"]
+        default_sorting = "-foo"
+
     hook(request_obj, mocker.Mock(), Resource(), dict())
 
     assert request_obj.context["sort"] == [("bar", "ASC")]
