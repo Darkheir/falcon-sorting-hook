@@ -50,12 +50,30 @@ Configuration options
 ---------------------
 
 Allowing fields for sorting
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For security reasons, the fields allowed for sorting must be specified in
 the :code:`sorting_fields` attribute of the resource.
 
 All the fields not defined in it will be discarded by the hook.
+
+
+Default sorting order
+~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to specify a default sorting order by setting the :code:`default_sorting` attribute in the resource.
+
+This attribute must be a string or a tuple that respects the convention we have for the request parameter.
+
+The attributes specified as the default order must also be part of :code:`sorting_fields`.
+
+Examples:
+
+.. code:: python
+
+    default_sorting = '-foo'
+    # or
+    default_sorting = ('foo', '-bar')
 
 Hook configuration
 ~~~~~~~~~~~~~~~~~~
